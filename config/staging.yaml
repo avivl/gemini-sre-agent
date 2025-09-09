@@ -1,0 +1,53 @@
+llm:
+  default_model_type: smart
+  max_cost: 50.0
+  min_performance: 0.8
+  min_quality: 0.9
+  optimization_goal: balanced
+  providers:
+    gemini:
+      api_key: AIzaSyA5ZvFnNDMWiFNWe3aElZDmi8V5UMTEKEk
+      max_retries: 3
+      models:
+        gemini-1.5-flash:
+          capabilities:
+          - text
+          - json
+          cost_per_1k_tokens: 7.5e-05
+          max_tokens: 1000000
+          model_type: fast
+          name: gemini-1.5-flash
+        gemini-1.5-pro:
+          capabilities:
+          - text
+          - json
+          - vision
+          cost_per_1k_tokens: 0.00125
+          max_tokens: 1000000
+          model_type: smart
+          name: gemini-1.5-pro
+      provider: gemini
+      timeout: 30
+    openai:
+      api_key: staging-key
+      max_retries: 3
+      models:
+        gpt-4o-mini:
+          capabilities:
+          - text
+          - json
+          cost_per_1k_tokens: 0.00015
+          max_tokens: 128000
+          model_type: smart
+          name: gpt-4o-mini
+      provider: openai
+      timeout: 30
+logging:
+  format: structured
+  level: INFO
+monitoring:
+  alert_thresholds:
+    max_cost_per_hour: 20.0
+    max_latency_ms: 3000
+    success_rate: 0.98
+  retention_hours: 72
